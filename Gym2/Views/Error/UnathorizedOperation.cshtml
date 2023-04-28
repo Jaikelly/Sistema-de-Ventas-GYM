@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "No autorizado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Error</h2>
+
+<section>
+       <div class="error-page">
+           <h2>No tienes permiso</h2>
+           <div>
+               @Html.ActionLink("Inicio", "../Home/Index") |
+               @Html.ActionLink("Iniciar sesión", "../Auth/Login")
+           </div>
+       </div>
+</section>
+

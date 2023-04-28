@@ -1,0 +1,46 @@
+﻿@model Gym2.Models.Usuario
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div style="margin-top:5%;" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-center" style="font-size: 25px;"><strong>Usuario: @Model.Rol.nombre</strong></div>
+            </div>
+            <div style="padding-top:30px; padding-left: 0px;" class="panel-body">
+                <div class="row">
+
+                    <div style="text-align: center;">
+                        <label>RUT</label>
+                        <p>@Model.rut</p>
+
+                        <hr />
+                        <label>Nombre</label>
+                        <p>@Model.nombres @Model.apellidos</p>
+
+                        <label>Fecha de Nacimiento</label>
+                        <p>@Html.ValueFor(modelItem => modelItem.fech_nacimiento, "{0:dd/MM/yyyy}")</p>
+
+                        <label>Email</label>
+                        <p>@Model.email</p>
+
+                        <label>Telefono</label>
+                        <p>@Model.telefono</p>
+
+                        <label>Direccion</label>
+                        <p>@Model.direccion</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" style="margin-top: 3%; margin-bottom: 5%">
+            @Html.ActionLink("Editar", "Edit", new { id = Model.rut }, new { @type = "button", @class = "btn  btn-success" })
+            <a href="../Index" class="btn btn-default">Volver</a>
+        </div>
+    </div>
+</div>

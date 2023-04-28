@@ -1,0 +1,38 @@
+﻿@model Gym2.Models.ViewModel.RecoveryPassword
+
+@{
+    ViewBag.Title = "Recuperar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div style="margin-top:5%;" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-center" style="font-size: 25px;"><strong>Nueva contraseña</strong></div>
+            </div>
+            <div style="padding-top:30px;" class="panel-body">
+
+                <div style="padding-left:18px">
+
+                    <form action="@Url.Content("~/Auth/Recovery")" method="post">
+                        @Html.HiddenFor(t => t.token)
+
+                        <label>Ingresa nueva contraseña</label>
+                        @Html.PasswordFor(d => d.Password, new { @class = "form-control",  @type = "password" })
+                        @Html.ValidationMessageFor(d => d.Password, null, new { style = "color:red"})
+
+                        <label>Ingresa de nuevo la contraseña</label>
+                        @Html.PasswordFor(d => d.Password2, new { @class = "form-control",  @type = "password" })
+                        @Html.ValidationMessageFor(d => d.Password2, null, new { style = "color:red" })
+                        <br />
+                        <div style=" " class="col-sm-11 controls text-center">
+                            <button class="btn btn-primary">Enviar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>

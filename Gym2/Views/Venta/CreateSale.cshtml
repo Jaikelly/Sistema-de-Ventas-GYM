@@ -1,0 +1,71 @@
+﻿@model Gym2.Models.Venta
+@{
+    ViewBag.Title = "Nueva venta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div style="margin-top:5%;" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-center" style="font-size: 25px;"><strong>Nueva venta</strong></div>
+            </div>
+            <div style="padding-top:30px; padding-left: 45px;" class="panel-body">
+                <div class="row">
+
+                    <form method="post" action="/Venta/Agregar">
+                        <div class="form-group">
+                            <label class="control-label">Cliente</label>
+                            <select class="form-control" name="idUsuario">
+                                <option selected>Selecione..</option>
+
+                                @foreach (var cliente in ViewBag.Socio1)
+                                {
+                                    <option value="@cliente.rut">@cliente.nombres </option>
+                                }
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label">Planes</label>
+                            <select class="form-control" name="idPlan">
+                                <option selected>Selecione..</option>
+
+                                @foreach (var plan in ViewBag.Plan1)
+                                {
+                                    <option value="@plan.id">@plan.nombre</option>
+
+                                }
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.fecha_inicio, "Fecha de Inicio", htmlAttributes: new { @class = "control-label" })
+                            <div>
+                                @Html.EditorFor(model => model.fecha_inicio, new { htmlAttributes = new { @class = "form-control", @type = "date"} })
+                                @Html.ValidationMessageFor(model => model.fecha_inicio, "", new { @class = "text-danger", @type = "date" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.fecha_termino, "Fecha de Termino", htmlAttributes: new { @class = "control-label" })
+                            <div>
+                                @Html.EditorFor(model => model.fecha_termino, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                                @Html.ValidationMessageFor(model => model.fecha_termino, "", new { @class = "text-danger",})
+                            </div>
+                        </div>
+
+                        <div class="" style="margin-top: 3%; margin-bottom: 5%; margin-left: 24%">
+                            <button class="btn btn-success">Agregar</button>
+                            <a href="../Index" class="btn btn-default">Volver</a>
+                        </div>
+
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

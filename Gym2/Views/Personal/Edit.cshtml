@@ -1,0 +1,101 @@
+﻿@model Gym2.Models.Usuario
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div style="margin-top:5%; width:100%;" class="">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-left" style="font-size: 25px; margin-left: 45%">
+                    <strong>Editar</strong>
+                </div>
+            </div>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    @Html.HiddenFor(model => model.rut)
+
+                    <div class="row" style="margin-left: 25%;">
+                        <div class="col-xs-4">
+                            <label class="form-label">Rut</label>
+                            <input class="form-control" name="rut" value="@Model.rut" disabled />
+                            @Html.ValidationMessageFor(model => model.rut, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-xs-4 form-group" style="margin-left: 1px;">
+                            <label class="form-label">Rol</label>
+                            @Html.DropDownList("idRol", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.idRol, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-left: 25%; margin-top: 2%;">
+                    <div class="col-xs-4">
+                        <label class="form-label">Nombres</label>
+                        <input class="form-control" name="nombres" value="@Model.nombres" />
+                        @Html.ValidationMessageFor(model => model.nombres, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="form-label">Apellidos</label>
+                        <input class="form-control" name="apellidos" value="@Model.apellidos" />
+                        @Html.ValidationMessageFor(model => model.apellidos, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row" style="margin-left: 25%; margin-top: 2%">
+                    <div class="col-xs-4">
+                        <label class="form-label">Nacimiento</label>
+                        <input class="form-control" name="fech_nacimiento" max="2003-12-31" type="date" value="@Model.fech_nacimiento" />
+                        @Html.ValidationMessageFor(model => model.fech_nacimiento, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="form-label">Dirección</label>
+                        <input class="form-control" type="text" name="direccion" value="@Model.direccion" />
+                        @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row" style="margin-left: 25%; margin-top: 2%">
+                    <div class="col-xs-4">
+                        <label class="form-label">Telefono</label>
+                        <input class="form-control" type="number" name="telefono" value="@Model.telefono" />
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" name="email" value="@Model.email" />
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group" style="margin-left: 26%; margin-top: 2%;">
+                    <label class="form-label">Password</label>
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", @type = "password", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <div class="text-center" style="margin-top: 3%; margin-bottom: 5%">
+                        <input type="submit" value="Guardar" class="btn btn-success" />
+                        <a href="../Index" class="btn btn-default">Volver</a>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+

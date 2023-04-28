@@ -1,0 +1,85 @@
+﻿@model Gym2.Models.Venta
+
+@{
+    ViewBag.Title = "Editar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div style="margin-top:5%; width:100%;" class="">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-left" style="font-size: 25px; margin-left: 45%">
+                    <strong>Editar</strong>
+                </div>
+            </div>
+
+            <form method="post" action="/Venta/Editado">
+
+                <div class="row" style="margin-left: 38%; margin-top: 3%">
+                    <label class="control-label">Nº</label>
+                    <input readonly class="form-control" type="number" name="id" value="@Model.id" />
+                </div>
+
+                <div class="form-group" style="margin-left: 38%; margin-top: 2%">
+                    <label class="control-label">Cliente</label>
+                    <select class="form-control" name="idUsuario">
+                        <option>Seleccione..</option>
+
+                        @foreach (var cliente in ViewBag.Socio1)
+                        {
+                            if (Model.idUsuario == cliente.rut)
+                            {
+                                <option selected value="@Model.idUsuario">@cliente.nombres</option>
+                            }
+                            else
+                            {
+                                <option value="@cliente.rut">@cliente.nombres</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group" style="margin-left: 38%">
+                    <label class="control-label">Plan</label>
+                    <select class="form-control" name="idPlan">
+                        <option>Seleccione..</option>
+
+                        @foreach (var plan in ViewBag.Plan1)
+                        {
+                            if (Model.idPlan == plan.id)
+                            {
+                                <option selected value="@Model.idPlan">@plan.nombre</option>
+                            }
+                            else
+                            {
+                                <option value="@plan.id">@plan.nombre</option>
+                            }
+                        }
+                    </select>
+                </div>
+
+                <div class="row" style="margin-left: 25%; margin-top: 2%">
+                    <div class="col-xs-4">
+                        <label class="form-label">Fecha Inicio</label>
+                        <input class="form-control" name="fecha_inicio" max="2003-12-31" value="@Model.fecha_inicio" />
+                        @Html.ValidationMessageFor(model => model.fecha_inicio, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-xs-4">
+                        <label class="form-label">Fecha termino</label>
+                        <input class="form-control" type="text" name="fecha_termino" value="@Model.fecha_termino" />
+                        @Html.ValidationMessageFor(model => model.fecha_termino, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="text-center" style="margin-top: 3%; margin-bottom: 5%">
+                    <button class="btn btn-success">Editar</button>
+                    <a href="../Index" class="btn btn-default">Volver</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

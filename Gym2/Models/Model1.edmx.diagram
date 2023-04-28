@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="65a288a763b0467189fa45ed3dd24eba" Name="Diagram1">
+        <EntityTypeShape EntityType="Gym2Model.Operaciones" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym2Model.Plan" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym2Model.Rol" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym2Model.Rol_Operaciones" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym2Model.Usuario" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Gym2Model.Venta" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <AssociationConnector Association="Gym2Model.FK_Rol_Operaciones_Operaciones" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym2Model.FK_Venta_Plan" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym2Model.FK_Rol_Operaciones_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym2Model.FK_Usuario_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="Gym2Model.FK_Venta_Usuario1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

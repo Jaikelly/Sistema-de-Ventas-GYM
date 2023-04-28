@@ -1,0 +1,59 @@
+﻿@model Gym2.Models.Venta
+
+@{
+    ViewBag.Title = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+
+    <div class="container">
+        <div style="margin-top:5%;" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title text-center" style="font-size: 25px;"><strong>¿Desea eliminar?</strong></div>
+                </div>
+                <div style="padding-top:30px; padding-left: 0px;" class="panel-body">
+                    <div class="row">
+
+                        <div style="text-align: center;">
+
+                            <label>Número de venta</label>
+                            <p>@Model.id</p>
+
+                            <label>Plan</label>
+                            <p>@Model.Plan.nombre</p>
+
+                            <label>Precio</label>
+                            <p>@Model.Plan.precio.ToString("$###,###,##0.00") </p>
+                            <hr />
+                            <label>Rut</label>
+                            <p>@Model.Usuario.rut</p>
+
+                            <label>Nombre</label>
+                            <p>@Model.Usuario.nombres @Model.Usuario.apellidos</p>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 3%; margin-bottom: 5%">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Eliminar" class="btn btn-success" />
+                        <a href="../Index" class="btn btn-default">Cancelar</a>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

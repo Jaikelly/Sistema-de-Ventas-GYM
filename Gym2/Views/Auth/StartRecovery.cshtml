@@ -1,0 +1,61 @@
+﻿@model Gym2.Models.ViewModel.RecoveryViewModel
+@{
+    /**/
+
+    ViewBag.Title = "Recuperar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div style="margin-top:5%;" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title text-center" style="font-size: 25px;"><strong>Recuperar contraseña</strong></div>
+            </div>
+            <div style="padding-top:30px;" class="panel-body">
+
+                <div style="padding-left:18px">
+
+                    <!--Alerta email no registrado-->
+                    @if (ViewBag.Existe != null)
+                    {
+                        <div>
+                            <div class="alert alert-dismissable alert-danger" style="width: 93%">
+                                <button type="button" class="close" data-dismiss="alert">
+                                    &times;
+                                </button>
+                                <center><strong>¡Aviso!</strong> @ViewBag.Existe</center>
+                            </div>
+                        </div>
+                    }
+
+                    <!--Alerta correo enciado-->
+                    @if (ViewBag.Enviado != null)
+                    {
+                        <div>
+                            <div class="alert alert-dismissable alert-success">
+                                <button type="button" class="close" data-dismiss="alert">
+                                    &times;
+                                </button>
+                                <center><strong>¡Aviso!</strong> @ViewBag.Enviado</center>
+                            </div>
+                        </div>
+                    }
+                    <form action="@Url.Content("~/Auth/StartRecovery")" method="post">
+
+                        <label>Ingresa tu correo electrónico</label>
+                        @Html.TextBoxFor(d => d.Email, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(d => d.Email, null, new { style = "color:red" })
+                        <br />
+                        <br />
+
+                        <div style=" " class="col-sm-11 controls text-center">
+                            <button class="btn btn-primary">Enviar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<Gym2.Models.Usuario>
+
+@{
+    ViewBag.Title = "Personal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div style="margin-top:5%; width:100%;" class="">
+
+        @using (Html.BeginForm("Index", "Personal", FormMethod.Get))
+        {
+            <div>
+                <div class="col-lg-3 " style="margin-top:1%;">
+                    <div class="input-group">
+                        <input name="Rut" type="text" class="form-control" placeholder="Buscar rut..">
+                        <span class="input-group-btn glyphicon glyphicon-search">
+                            <button class="btn btn-default" type="submit"> <span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+
+                <div class="panel-title text-left" style="font-size: 25px; margin-left: 45%">
+
+                    <strong>PERSONAL</strong>
+                    <div class="pull-right">
+                        <a href="../Personal/Create" type="button" class="btn btn-default" style="margin-left:1%; margin-right: 1%">
+                            Nuevo
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div>
+
+                <table class="table table-hover active panel panel-info">
+
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">
+                                RUT
+                            </th>
+                            <th>
+
+                            </th>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Apellido
+                            </th>
+                            <th>
+                                Telefono
+                            </th>
+                            <!--
+                            <th>
+                                Direccion
+                            </th>
+                            -->
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                Rol
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                    <thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td style="background-color: rgb(235, 245, 251); text-align: center;">
+                                    <strong>
+                                        @Html.ValueFor(modelItem => item.rut)
+                                    </strong>
+                                </td>
+                                <td></td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.nombres)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.apellidos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.telefono)
+                                </td>
+                                <!--
+                                <td>
+                                    Html.DisplayFor(modelItem => item.direccion)
+                                </td>
+                                -->
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Rol.nombre)
+                                </td>
+                                <td style="text-align: center">
+                                    @Html.ActionLink(" ", "Edit", new { id = item.rut }, new { @class = " glyphicon glyphicon-edit" }) |
+                                    @Html.ActionLink(" ", "Details", new { id = item.rut }, new { @class = "glyphicon glyphicon-eye-open" }) |
+                                    @Html.ActionLink(" ", "Delete", new { id = item.rut }, new { @class = "glyphicon glyphicon-trash text-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

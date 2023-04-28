@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Gym2.Models.Venta>
+
+@{
+    ViewBag.Title = "Ventas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div style="margin-top:5%; width:100%;" class="">
+
+        @using (Html.BeginForm("Index", "Venta", FormMethod.Get))
+        {
+            <div>
+                <div class="col-lg-3 " style="margin-top:1%;">
+                    <div class="input-group">
+                        <input name="Rut" type="text" class="form-control" placeholder="Buscar rut..">
+                        <span class="input-group-btn glyphicon glyphicon-search">
+                            <button class="btn btn-default" type="submit"> <span class="glyphicon glyphicon-search"></span></button>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        }
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+
+                <div class="panel-title text-left" style="font-size: 25px; margin-left: 45%">
+
+                    <strong>VENTAS</strong>
+
+                </div>
+
+            </div>
+            <div>
+
+
+                <table class="table table-hover active panel panel-info" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">
+                                RUT
+                            </th>
+                            <th></th>
+                            <th>
+                                Cliente
+                            </th>
+                            <th>
+                                Plan
+                            </th>
+                            <th style="text-align: center;">
+                                Fecha Inicio
+                            </th>
+                            <th style="text-align: center;">
+                                Fecha Termino
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="background-color: rgb(235, 245, 251); text-align: center;">
+                                    <strong>
+                                        @Html.ValueFor(modelItem => item.Usuario.rut)
+                                    </strong>
+                                </td>
+                                <td></td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Usuario.nombres)
+                                    @Html.DisplayFor(modelItem => item.Usuario.apellidos)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Plan.nombre)
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.ValueFor(modelItem => item.fecha_inicio, "{0:dd/MM/yyyy}")
+                                </td>
+                                <td style="text-align: center;">
+                                    @Html.ValueFor(modelItem => item.fecha_termino, "{0:dd/MM/yyyy}")
+                                </td>
+                                <td style="text-align: center">
+                                    @Html.ActionLink(" ", "Editar", new { id = item.id }, new { @class = " glyphicon glyphicon-edit" }) |
+                                    @Html.ActionLink(" ", "Delete", new { id = item.id }, new { @class = "glyphicon glyphicon-trash text-danger" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
